@@ -1,0 +1,66 @@
+// palette
+$bg: #0d1523;
+$stroke: rgba(255,255,255,.18);
+$hover: rgba(255,255,255,.08);
+$text: #dfe7ff;
+
+$blue-400:#5c86ff;
+$blue-500:#3f78ff;
+
+// layout
+.pill-nav{
+  display: flex;
+  gap: 14px;
+  padding: 10px 16px;
+  background: transparent; // разместите на тёмном фоне
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.pill{
+  --pad-x: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 var(--pad-x);
+  border-radius: 999px;
+  text-decoration: none;
+  color: $text;
+  border: 1px solid $stroke;
+  background: transparent;
+  transition: filter .15s ease, box-shadow .15s ease, transform .06s ease, background .15s ease;
+  cursor: pointer;
+  &.activeTab{
+    background: black;
+  }
+  svg{
+    width: 20px; height: 20px;
+    fill: transparent;
+    stroke: $blue-400;
+    stroke-width: 1.6;
+  }
+  /* для простых путей без штриха */
+  svg path[fill]:not([fill="none"]){ fill: transparent; stroke: $blue-400; }
+
+  span{
+    font-weight: 700; font-size: 14px; letter-spacing: .2px;
+  }
+
+  &:hover{ background: $hover; filter: brightness(1.05); }
+  &:active{ transform: translateY(1px); }
+
+  &:focus-visible{
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(92,134,255,.35);
+  }
+
+}
+
+// компакт на узких экранах
+@media (max-width: 720px){
+  .pill-nav{ gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+  .pill{ --pad-x: 12px; height: 36px; }
+  .pill span{ font-size: 13px; }
+  .pill svg{ width: 18px; height: 18px; }
+}
+

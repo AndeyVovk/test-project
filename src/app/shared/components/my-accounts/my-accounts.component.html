@@ -1,0 +1,71 @@
+<div class="accounts-card">
+  <header class="accounts-toolbar">
+    <h2>My accounts</h2>
+
+    <div class="tools">
+      <label class="search">
+        <input type="search" placeholder="Search" aria-label="Search accounts"
+        (input)="search($event)"/>
+      </label>
+      <button class="btn ghost">Filter</button>
+      <button class="btn ghost">Sort</button>
+      <button class="btn ghost">Group</button>
+      <button class="btn primary">+ New</button>
+    </div>
+  </header>
+
+  <div class="table-wrap">
+    <table class="accounts">
+      <thead>
+      <tr>
+        <th>Account Name/Type</th>
+        <th>Line</th>
+        <th>Broker</th>
+        <th>Renewal date</th>
+        <th>Premium</th>
+        <th>Rated premium</th>
+        <th>Loss ratio</th>
+        <th>Appetite</th>
+        <th>Status</th>
+        <th>Triage</th>
+        <th>Winnability</th>
+        <th aria-label="Actions"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let polities of polities$ | async">
+        <td>
+          <div class="cell-title">
+            <div class="title">{{polities.name}}</div>
+            <div class="sub">{{polities.effective}}</div>
+          </div>
+        </td>
+        <td>{{polities.lob}}</td>
+        <td>{{polities.premium}}</td>
+        <td><time datetime="2025-04-16">04/16/2025</time></td>
+        <td class="strong">$2.3M</td>
+        <td>$2.8M</td>
+        <td>
+          <span class="pill ratio ok">32%</span>
+        </td>
+        <td>
+          <span class="pill tone-high">HIGH</span>
+        </td>
+        <td>
+          <span class="status ok"><i></i>Active</span>
+        </td>
+        <td><span class="chip">180</span></td>
+        <td>
+          <div class="win">
+            <div class="dots" data-value="5" aria-hidden="true"></div>
+            <span class="label">Very Strong</span>
+          </div>
+        </td>
+        <td><button class="kebab" aria-label="Row actions">⋯</button></td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.dashboard {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    &--right-part{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  &__accounts{
+    padding-top: 10px;
+  }
+}

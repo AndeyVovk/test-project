@@ -1,0 +1,61 @@
+<div class="work-queue">
+  <div class="card">
+    <div class="card__header">
+      <h2 class="card__title">Work Queue</h2>
+
+      <nav class="tabs" aria-label="Work queue filters">
+        <button class="tabs__pill is-active">
+          Assigned to me <span class="tabs__count">12</span>
+        </button>
+        <button class="tabs__pill">
+          Pending Review <span class="tabs__count">8</span>
+        </button>
+        <button class="tabs__pill">
+          Referrals <span class="tabs__count">3</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Head row -->
+    <div class="table">
+      <div class="table__head">
+        <div class="th th--originator">Originator</div>
+        <div class="th th--client">Client/Line</div>
+        <div class="th th--type">Type</div>
+        <div class="th th--status">Status</div>
+        <div class="th th--created">Created</div>
+        <div class="th th--actions" aria-hidden="true"></div>
+      </div>
+      <div class="table__row" *ngFor="let queue of queues$ | async">
+        <div class="td td--originator">
+          <div class="avatar" aria-hidden="true">SM</div>
+          <div class="meta">
+            <div class="meta__title">{{ queue.account }}</div>
+          </div>
+        </div>
+
+        <div class="td td--client">
+          <div class="meta">
+            <div class="meta__title">NAMEX Tech Solutions</div>
+            <div class="meta__sub">{{ queue.priority }}</div>
+          </div>
+        </div>
+
+        <div class="td td--type">{{ queue.type }}</div>
+
+        <div class="td td--status">
+          <span class="dot dot--blue" aria-hidden="true"></span>
+          <span class="status-label">{{ queue.status }}</span>
+        </div>
+
+        <div class="td td--created">{{ queue.due }}</div>
+
+        <div class="td td--actions">
+          <button class="icon-btn" aria-label="More actions">
+            <span class="kebab" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

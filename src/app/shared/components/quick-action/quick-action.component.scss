@@ -1,0 +1,78 @@
+// ---- Palette (можно подстроить под проект)
+$card-bg: #111a2b;
+$card-grad: #0d1523;
+$border: rgba(255,255,255,.08);
+$text: #e7edf7;
+$muted: #cfd8ea;
+
+$blue-500: #3f78ff;
+$blue-600: #3a63b8;
+$blue-400: #5c86ff;
+
+* { box-sizing: border-box; }
+
+.quick-card{
+  width: 300px; // можно убрать и дать родителю управлять
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, $card-bg 0%, $card-grad 100%);
+  border: 1px solid $border;
+  color: $text;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  .quick-card__title{
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    color: $muted;
+  }
+}
+
+.quick-actions{
+  display: grid;
+  gap: 10px;
+}
+
+.qa-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .2px;
+  color: #f5f8ff;
+  background: linear-gradient(180deg, $blue-500 0%, $blue-400 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),
+  0 1px 0 rgba(0,0,0,.25);
+  transition: transform .06s ease, filter .15s ease, box-shadow .15s ease;
+
+  &:hover{ filter: brightness(1.08); }
+  &:active{ transform: translateY(1px); }
+
+  // keyboard focus
+  &:focus-visible{
+    outline: none;
+    box-shadow:
+      0 0 0 2px #0e1624,
+      0 0 0 4px rgba(92,134,255,.65);
+  }
+
+  // вариант disabled, если понадобится
+  &.is-disabled,
+  &[aria-disabled="true"]{
+    pointer-events: none;
+    opacity: .55;
+    filter: grayscale(.1);
+  }
+}
+
+/* Компактный вариант для узких карточек */
+@media (max-width: 360px){
+  .quick-card{ padding: 14px; }
+  .qa-btn{ height: 38px; font-size: 13px; }
+}
